@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Featured Products</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div class="loader-wrapper" aria-hidden="true">
+    <div class="spinner"></div>
+    <p class="loader-text">Loading Collection...</p>
+  </div>
+
+  <!-- Animated Navigation Menu -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">AURA</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section with Animated Background -->
+  <section id="home" class="hero">
+    <div class="hero-decor decor-1"></div>
+    <div class="hero-decor decor-2"></div>
+
+    <div class="hero-content">
+      <h1>Next-Gen Everyday Gear</h1>
+      <p>Engineered with precision. Designed for movement.</p>
+      <a href="#products" class="cta-btn">
+        Explore Collection <span class="btn-icon">➔</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Products Grid (6 Cards) -->
+  <main id="products" class="products-section">
+    <div class="section-header">
+      <h2>Featured Products</h2>
+      <div class="skew-divider"></div>
+    </div>
+
+    <div class="product-grid">
+      <!-- Card 1 -->
+      <article class="product-card" style="--delay: 0.1s;">
+        <div class="card-badge">New</div>
+        <div class="card-image">
+          <span class="product-icon">🎧</span>
+        </div>
+        <div class="card-body">
+          <h3>Studio ANC Headphones</h3>
+          <p>Adaptive noise cancellation with 40-hour battery life.</p>
+          <div class="card-footer">
+            <span class="price">$249</span>
+            <button class="buy-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="product-card" style="--delay: 0.2s;">
+        <div class="card-image">
+          <span class="product-icon">⌚</span>
+        </div>
+        <div class="card-body">
+          <h3>Chrono Smart Watch</h3>
+          <p>Sapphire glass display with biometric health tracking.</p>
+          <div class="card-footer">
+            <span class="price">$329</span>
+            <button class="buy-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="product-card" style="--delay: 0.3s;">
+        <div class="card-badge">Popular</div>
+        <div class="card-image">
+          <span class="product-icon">⌨️</span>
+        </div>
+        <div class="card-body">
+          <h3>Tactile Mech Keyboard</h3>
+          <p>Hot-swappable switches in an anodized aluminum frame.</p>
+          <div class="card-footer">
+            <span class="price">$179</span>
+            <button class="buy-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="product-card" style="--delay: 0.4s;">
+        <div class="card-image">
+          <span class="product-icon">📷</span>
+        </div>
+        <div class="card-body">
+          <h3>Compact 4K Lens Cam</h3>
+          <p>Pocket-sized cinema sensor with dual optical stabilization.</p>
+          <div class="card-footer">
+            <span class="price">$599</span>
+            <button class="buy-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="product-card" style="--delay: 0.5s;">
+        <div class="card-image">
+          <span class="product-icon">🔋</span>
+        </div>
+        <div class="card-body">
+          <h3>MagCharge Power Bank</h3>
+          <p>10,000mAh ultra-slim wireless fast-charging pack.</p>
+          <div class="card-footer">
+            <span class="price">$89</span>
+            <button class="buy-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="product-card" style="--delay: 0.6s;">
+        <div class="card-badge">Limited</div>
+        <div class="card-image">
+          <span class="product-icon">🔊</span>
+        </div>
+        <div class="card-body">
+          <h3>360° Acoustic Speaker</h3>
+          <p>Waterproof spatial audio speaker with deep bass radiators.</p>
+          <div class="card-footer">
+            <span class="price">$199</span>
+            <button class="buy-btn">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+</body>
+</html>
