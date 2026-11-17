@@ -1,0 +1,437 @@
+:root {
+  --primary: #4CAF70;
+  --primary-dark: #327149;
+  --accent: #4CA0AF;
+  --bg-dark: #08120B;
+  --bg-card: #245235;
+  --text-light: #f8fafc;
+  --text-muted: #000000;
+}
+
+*{
+  margin:  0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Loading Screen */
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade-out from Loading Screen to Main Page */
+@keyframes fadeOutLoader{
+  0%, 75%{
+    opacity: 1;
+    visibility: visible;
+  }
+  100%{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Animated Background for Main Page */
+@keyframes gradientShift{
+  0%{
+    background-position: 0% 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0% 50%;
+  }
+}
+
+/* Navigation Bar Drop-in */
+@keyframes navSlideDown{
+  from{
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Product Card Slide-in */
+@keyframes slideInUp{
+  from{
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* CTA Buttons Pulse Animation */
+@keyframes pulseGlow{
+  0%{
+    box-shadow: 0 0 0 0 rgba(24, 125, 50, 0.8);
+    transform: scale(1);
+  }
+  50%{
+    box-shadow: 0 0 0 0 rgba(24, 125, 50, 0.8);
+    transform: scale(1.1);
+  }
+  100%{
+    box-shadow: 0 0 0 0 rgba(24, 125, 50, 0.8);
+    transform: scale(1);
+  }
+}
+
+@keyframes floatAndRotate {
+  0% {
+    transform: skew(-20deg, 10deg) translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: skew(-15deg, 5deg) translateY(-20px) rotate(15deg);
+  }
+  100% {
+    transform: skew(-20deg, 10deg) translateY(0px) rotate(0deg);
+  }
+}
+
+/* Loading Screen */
+.loading-screen{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeOutLoader 1.8s ease forwards;
+  pointer-events: none;
+}
+
+.loading-ring{
+  width: 54px;
+  height: 54px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent);
+  border-right-color: var(--primary);
+  border-radius: 50%;
+  transform-origin: center center;
+  animation: spin 0.9s linear infinite;
+}
+
+.loading-text{
+  margin-top: 14px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+/* Navigation Bar */
+.navigation-bar{
+  position: sticky;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: #245235;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  animation: navSlideDown 0.7s ease-out forwards;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.logo-icon{
+  display: inline-block;
+  transform-origin: 50% 50%;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo:hover .logo-icon{
+  transform: rotate(180deg) scale(1.2);
+}
+
+.navigation-links{
+  display: flex;
+  list-style: none;
+  gap: 32px;
+}
+
+.navigation-links a{
+  position: relative;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.navigation-links a:hover{
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+.navigation-links a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s ease;
+}
+
+.navigation-links a:hover::after{
+  width: 100%;
+}
+
+/* Product Section */
+.hero{
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 64px 32px;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #3A7132, #327149, #327169, #3A7132);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* Skew transformations for background layers */
+.hero-background{
+  position: absolute;
+  background: rgba(8, 18, 8, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.layer-1{
+  width: 280px;
+  height: 280px;
+  top: -60px;
+  left: 5%;
+  transform: skew(-20deg, 10deg);
+  animation: floatAndRotate 8s ease-in-out infinite;
+}
+
+.layer-2{
+  width: 340px;
+  height: 220px;
+  bottom: -50px;
+  right: 8%;
+  background: rgba(22, 50, 23, 1);
+  animation: floatAndRotate 12s ease-in-out infinite reverse;
+}
+
+.hero-content{
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+}
+
+.hero-content h1{
+  font-size: 22px;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.hero-content p{
+  color: var(--text-muted);
+  font-size: 18px;
+  margin-bottom: 32px;
+}
+
+/* CTA Buttons */
+.cta-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: linear-gradient(var(--primary), var(--accent));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 50px;
+  animation: pulseGlow 2.2s infinite;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-btn:hover{
+  animation-play-state: paused;
+  transform: scale(1.1);
+}
+
+.btn-icon{
+  display: inline-block;
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover .btn-icon{
+  transform: translateY(5px) rotate(-15deg);
+}
+
+/* Product Cards and Grid */
+.products-section{
+  padding: 72px;
+}
+
+.section-header{
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-header h2{
+  font-size: 34px;
+}
+
+.skew-divider{
+  width: 80px;
+  height: 5px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: skewX(-30deg);
+}
+
+.product-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.product-card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  opacity: 0;
+  animation: slideInUp 0.7s ease-out forwards;
+  animation-delay: calc(0.8s + var(--delay, 0s));
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.product-card:hover{
+  transform: translateY(-10px) scale(1);
+  border-color: var(--primary);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+}
+
+.card-badge{
+  position: absolute;
+  top: 14px;
+  left: -6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 14px;
+  text-transform: uppercase;
+  transform: skewX(-15deg);
+  z-index: 2;
+}
+
+.card-image{
+  height: 180px;
+  background: linear-gradient(135deg, rgba(99, 241, 187, 0.15), rgba(72, 162, 236, 0.15));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.card-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .card-image img{
+  transform: scale(1.1);
+}
+
+.card-body{
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-body h3{
+  font-size: 20px;
+  margin-bottom: 8px;
+  transition:  color 0.3s ease;
+}
+
+.product-card:hover .card-body h3{
+  color: #a5fccc
+}
+
+.card-body p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+.buy-btn {
+  padding: 8px 8px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  /* Smooth color & size/scale transitions */
+  transition: background-color 0.3s ease, transform 0.25s ease, padding 0.25s ease;
+}
+
+.buy-btn:hover {
+  background-color: var(--accent);
+  padding: 8px 22px;
+  transform: scale(1.05);
+}
